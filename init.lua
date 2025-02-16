@@ -145,13 +145,14 @@ require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
   'rose-pine/neovim',
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
-  'github/copilot.vim',
+  --'github/copilot.vim',
   'nvim-lua/plenary.nvim',
   'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
   'MunifTanjim/nui.nvim',
   'nvim-neo-tree/neo-tree.nvim',
   'nvim-neotest/nvim-nio',
   'fredrikaverpil/neotest-golang',
+  'nvim-treesitter/nvim-treesitter-context',
   'kdheepak/lazygit.nvim',
   {
     'nvim-neotest/neotest',
