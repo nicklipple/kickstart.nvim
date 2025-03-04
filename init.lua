@@ -243,12 +243,15 @@ require('lazy').setup({
     end,
   },
   --'pocco81/auto-save.nvim',
-  {
+  'rcarriga/nvim-notify',
+  --[[{
     'hrsh7th/nvim-cmp',
     opts = function(_, opts)
+      print 'opts func running'
       local has_words_before = function()
         unpack = unpack or table.unpack
         local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+        print(vim.api.nvim_buf_get_lines(0, line - 1, line, true))
         return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match '%s' == nil
       end
 
@@ -256,7 +259,9 @@ require('lazy').setup({
 
       opts.mapping = vim.tbl_extend('force', {}, {
         ['<Tab>'] = cmp.mapping(function(fallback)
+          vim.notify 'debug cmp'
           if cmp.visible() then
+            print 'cmp is visible'
             -- You could replace select_next_item() with confirm({ select = true }) to get VS Code autocompletion behavior
             --cmp.select_next_item()
             cmp.confirm { select = true }
@@ -285,6 +290,8 @@ require('lazy').setup({
       })
     end,
   },
+  ]]
+  --
   -- NOTE: Plugins can also be added by using a table,
   -- with the first argument being the link and the following
   -- keys can be used to configure plugin behavior/loading/etc.
@@ -850,8 +857,8 @@ require('lazy').setup({
           -- If you prefer more traditional completion keymaps,
           -- you can uncomment the following lines
           --['<CR>'] = cmp.mapping.confirm { select = true },
-          --['<Tab>'] = cmp.mapping.select_next_item(),
-          --['<S-Tab>'] = cmp.mapping.select_prev_item(),
+          ['<Tab>'] = cmp.mapping.select_next_item(),
+          ['<S-Tab>'] = cmp.mapping.select_prev_item(),
 
           -- Manually trigger a completion from nvim-cmp.
           --  Generally you don't need this, because nvim-cmp will display
