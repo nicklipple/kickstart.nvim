@@ -145,7 +145,7 @@ require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
   'rose-pine/neovim',
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
-  --'github/copilot.vim',
+  'github/copilot.vim',
   'nvim-lua/plenary.nvim',
   'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
   'MunifTanjim/nui.nvim',
@@ -153,6 +153,18 @@ require('lazy').setup({
   'nvim-neotest/nvim-nio',
   'fredrikaverpil/neotest-golang',
   'nvim-treesitter/nvim-treesitter-context',
+  {
+    'CopilotC-Nvim/CopilotChat.nvim',
+    dependencies = {
+      { 'github/copilot.vim' }, -- or zbirenbaum/copilot.lua
+      { 'nvim-lua/plenary.nvim', branch = 'master' }, -- for curl, log and async functions
+    },
+    build = 'make tiktoken', -- Only on MacOS or Linux
+    opts = {
+      -- See Configuration section for options
+    },
+    -- See Commands section for default commands if you want to lazy load on them
+  },
   {
     'theprimeagen/harpoon',
     branch = 'harpoon2',
