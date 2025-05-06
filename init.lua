@@ -1,4 +1,5 @@
 -- Set <space> as the leader key
+--
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
@@ -256,6 +257,7 @@ require('lazy').setup({
   },
   --'pocco81/auto-save.nvim',
   'rcarriga/nvim-notify',
+<<<<<<< Updated upstream
   {
     'kristijanhusak/vim-dadbod-ui',
     dependencies = {
@@ -273,6 +275,9 @@ require('lazy').setup({
       vim.g.db_ui_use_nerd_fonts = 1
     end,
   },
+=======
+  'AlexvZyl/nordic.nvim',
+>>>>>>> Stashed changes
   --[[{
     'hrsh7th/nvim-cmp',
     opts = function(_, opts)
