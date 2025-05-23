@@ -146,7 +146,25 @@ require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
   'rose-pine/neovim',
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
-  'github/copilot.vim',
+  -- 'github/copilot.vim',
+  {
+    'zbirenbaum/copilot.lua',
+    cmd = 'Copilot',
+    event = 'InsertEnter',
+    config = function()
+      require('copilot').setup {
+        suggestion = { enabled = false },
+        panel = { enabled = false },
+      }
+    end,
+  },
+  {
+    'zbirenbaum/copilot-cmp',
+    after = { 'copilot.lua' },
+    config = function()
+      require('copilot_cmp').setup()
+    end,
+  },
   'nvim-lua/plenary.nvim',
   'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
   'MunifTanjim/nui.nvim',
@@ -257,7 +275,6 @@ require('lazy').setup({
   },
   --'pocco81/auto-save.nvim',
   'rcarriga/nvim-notify',
-<<<<<<< Updated upstream
   {
     'kristijanhusak/vim-dadbod-ui',
     dependencies = {
@@ -275,9 +292,7 @@ require('lazy').setup({
       vim.g.db_ui_use_nerd_fonts = 1
     end,
   },
-=======
   'AlexvZyl/nordic.nvim',
->>>>>>> Stashed changes
   --[[{
     'hrsh7th/nvim-cmp',
     opts = function(_, opts)
@@ -934,6 +949,7 @@ require('lazy').setup({
           --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
         },
         sources = {
+          { name = 'copilot' },
           {
             name = 'lazydev',
             -- set group index to 0 to skip loading LuaLS completions as lazydev recommends it
